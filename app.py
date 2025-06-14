@@ -12,7 +12,7 @@ model = ChatGroq(model="Gemma2-9b-It",api_key=groq_api_key)
 from langchain_core.prompts import ChatPromptTemplate
 
 prompt = ChatPromptTemplate.from_messages([
-    ("system","Act as a language translate which translate english to {language}"),
+    ("system","Act as a helpfull assistant and give best answers to the query asked to you"),
     ("user","{input}")
 ])
 
@@ -21,10 +21,9 @@ from langchain_core.output_parsers import StrOutputParser
 parser = StrOutputParser()
 
 chain = prompt|model|parser
-st.title("English Language translator to your wanted language: ")
+st.title("Small scale LLM model for Keenuu ")
 
-language = st.text_input("Enter the Language to translate english to: ")
-input = st.text_area("Enter text here: ")
+input = st.text_area("Enter your query keenu: ")
 
 
-st.write(chain.invoke({"language":language,"input":input}))
+st.write(chain.invoke({"input":input}))
