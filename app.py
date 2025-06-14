@@ -28,10 +28,20 @@ st.title("Small scale LLM model  ")
 
 input = st.text_area("Enter your query: ")
 
-if st.button("genrate"):
+if st.button("Generate"):
     with st.spinner("Thinking..."):
         raw_output = chain.invoke({"input": input})
-        # Remove <think>...</think> or similar reasoning sections
+        
+        # Extract <think> part (if exists)
+        think_match = re.search(r"<think>(.*?)</think>", raw_output, re.DOTALL)
+        thinking_text = think_match.group(1).strip() if think_match else "No internal thoughts found."
+        
+        # Remove <think> section from final output
         clean_output = re.sub(r"<think>.*?</think>", "", raw_output, flags=re.DOTALL).strip()
+        
         st.success("Answer:")
         st.write(clean_output)
+        
+        # Add checkbox to optionally show the "thinking"
+        if st.checkbox("🤔 Show what the model was thinking"):
+            st.info(thinking_text)
