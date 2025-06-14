@@ -28,5 +28,5 @@ st.title("Small scale LLM model for Keenuu ")
 
 input = st.text_area("Enter your query keenu: ")
 
-
-st.write(chain.invoke({"input":input}))
+if st.button("genrate"):
+    st.write(chain.invoke({"input":input}))
