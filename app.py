@@ -30,7 +30,7 @@ input = st.text_area("Enter your query: ")
 
 if st.button("genrate"):
     with st.spinner("Thinking..."):
-        raw_output = chain.invoke({"input": user_input})
+        raw_output = chain.invoke({"input": input})
         # Remove <think>...</think> or similar reasoning sections
         clean_output = re.sub(r"<think>.*?</think>", "", raw_output, flags=re.DOTALL).strip()
         st.success("Answer:")
