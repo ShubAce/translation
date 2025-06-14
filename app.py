@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 load_dotenv()
 import streamlit as st
 
-groq_api_key = os.getenv("GROQ_API_KEY")
+groq_api_key = "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"
 
 from langchain_groq import ChatGroq
 
