@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 import streamlit as st
-
+import re
 os.environ["LANGCHAIN_API_KEY"] = "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"
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_PROJECT"] = "GenAIAPIWithOPENAI"
