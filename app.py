@@ -24,9 +24,14 @@ from langchain_core.output_parsers import StrOutputParser
 parser = StrOutputParser()
 
 chain = prompt|model|parser
-st.title("Small scale LLM model for Keenuu ")
+st.title("Small scale LLM model  ")
 
-input = st.text_area("Enter your query keenu: ")
+input = st.text_area("Enter your query: ")
 
 if st.button("genrate"):
-    st.write(chain.invoke({"input":input}))
+    with st.spinner("Thinking..."):
+        raw_output = chain.invoke({"input": user_input})
+        # Remove <think>...</think> or similar reasoning sections
+        clean_output = re.sub(r"<think>.*?</think>", "", raw_output, flags=re.DOTALL).strip()
+        st.success("Answer:")
+        st.write(clean_output)
