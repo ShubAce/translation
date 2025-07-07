@@ -6,7 +6,7 @@ import re
 os.environ["LANGCHAIN_API_KEY"] = "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"
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_PROJECT"] = "GenAIAPIWithOPENAI"
-groq_api_key = "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"
+groq_api_key = "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"
 
 from langchain_groq import ChatGroq
 
