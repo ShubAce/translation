@@ -10,7 +10,7 @@ groq_api_key = "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"
 
 from langchain_groq import ChatGroq
 
-model = ChatGroq(model="qwen-qwq-32b",api_key=groq_api_key)
+model = ChatGroq(model="gemma2-9b-It",api_key=groq_api_key)
 
 from langchain_core.prompts import ChatPromptTemplate
 
